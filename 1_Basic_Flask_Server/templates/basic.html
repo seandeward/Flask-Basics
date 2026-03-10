@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>My Flask App</title>
+</head>
+<body>
+	<h1>Header Test</h1>
+	<p>paragraph element</p>
+	<button id="button">Do stuff</button>
+	<p id="results">#</p>
+
+	<script>
+		let button = document.getElementById("button");
+		let results = document.getElementById("results");
+
+		button.addEventListener("click", print_to_results);
+
+		function print_to_results() {
+			results.innerText = "yahoo!";
+		}
+	</script>
+</body>
+</html>
