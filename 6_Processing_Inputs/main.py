@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import webbrowser as web
 
 app = Flask(__name__)
 
@@ -9,4 +10,7 @@ def home():
   )
 
 if __name__ == "__main__":
-  app.run(host="127.0.0.1", port=4444, debug=True)
+  hostIP = '127.0.0.1'
+  port_num = '4444'
+  # web.open(f'http://{hostIP}:{port_num}')
+  app.run(host=hostIP, port=port_num, debug=True)
