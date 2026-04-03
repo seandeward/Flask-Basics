@@ -1,5 +1,7 @@
 # How to Set Up Basic User Authentication in a Flask App
 
+Guide URL: https://www.freecodecamp.org/news/how-to-setup-user-authentication-in-flask
+
 User authentication is important for protecting sensitive information and resources from unauthorized access.
 
 It helps ensure that only authorized users can access and make changes to data, and helps prevent unauthorized users from gaining access to sensitive information.
@@ -45,3 +47,19 @@ Code: `py -m venv env` and then `env/scripts/activate`.
 
 ## Setting up the Project
 
+1. Create a `src` directory.
+2. Create the `__init__.py` file for the project.
+  - Here we set up:
+    - `app = Flask(__name__)`'s `__name__` argument indicates the app's module/package - so that Flask knows where to find other files/templates
+    - We set an environment variable in `app.config.from_object(config("APP_SETTINGS"))`
+    - Flask-Bcrypt, Flask-SQLAlchemy, and Flask-Migrate in the app, you need to create objects. Then, migrate each class from their respective library.
+    - We also put code in for blueprints- more on that later.
+3. Create `config.py`
+  - Here, create a `Config` class and define various attributes inside of that. Then, create different child classes (as different stages of development) that inherit the `Config` class.
+  - Here we're using a few environment variables like `SECRET_KEY` and `DATABASE_URL`.
+4. Create a file named `.env` in the root directory and add the the environment variables there.
+  - Here, the `APP_SETTINGS` refers to one of the classes we created in the `config.py` file. We set it to the current stage of the project.
+  - The value of `FLASK_APP` is the name of the package that we created. Since the app is in the development stage, you can set the values of `DEBUG` and `FLASK_DEBUG` to `True` and `1`, respectively.
+5. Run the command `source .env` to export all the environment variables from the .env file.
+6. Create a CLI application of the app so that later you can add custom commands `test` and `create_admin` in order to test the application and create admin, respectively.
+  - To do this, create a `manage.py` file in the root dir.
